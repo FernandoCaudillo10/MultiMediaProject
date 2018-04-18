@@ -7,9 +7,17 @@ from PyQt5.QtGui import QColor
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
+        self.edit = QLineEdit("drag and drop", self)
+        self.edit.setDragEnabled(True)
         
+        hbox = QHBoxLayout()
+        hbox.addWidget(self.edit)
+        self.setLayout(hbox)
+        self.setGeometry(200,200,200,200)
 
-        
+
+
+
 app = QApplication(sys.argv)
 
 mw = MainWindow()
