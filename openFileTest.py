@@ -5,22 +5,26 @@ from PIL import Image
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-class Main(QWidget):
+class Main(QMainWindow,QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
     def initUI(self):      
 
         self.textEdit = QTextEdit()
-        #self.setCentralWidget(self.textEdit)
+        #self.textEdit.resize(200,200)
+        #self.textEdit.move(200,200)
+        self.setCentralWidget(self.textEdit)
 
         #self.statusBar()
         self.openFile = QPushButton("search",self)
+        self.openFile.move(305,365)
         #openFile = QAction(QIcon('open.png'), 'Open', self)
         #openFile.setShortcut('Ctrl+O')
         #openFile.setStatusTip('Open new File')
         #openFile.triggered.connect(self.showDialog)
         self.openFile.clicked.connect(self.showDialog)
+
 
         #menubar = self.menuBar()
         #fileMenu = menubar.addMenu('&File')
@@ -28,16 +32,18 @@ class Main(QWidget):
         
         
         self.setWindowTitle('File dialog')
-
-        hbox = QHBoxLayout(self)
-        hbox.addWidget(self.textEdit)
-        hbox1 = QHBoxLayout(self)
-        hbox1.addWidget(self.openFile)
-        vbox = QVBoxLayout(self)
-        vbox.addLayout(hbox)
-        vbox.addLayout(hbox1)
-        self.setLayout(vbox)
-        self.setGeometry(400, 300, 350, 400)
+        """
+        self.hbox = QHBoxLayout(self)
+        self.hbox.addWidget(self.textEdit)
+        self.hbox1 = QHBoxLayout(self)
+        self.hbox1.addWidget(self.openFile)
+        self.vbox = QVBoxLayout(self)
+        self.vbox.addChildLayout(self.hbox)
+        self.vbox.addChildLayout(self.hbox1)
+        self.setLayout(self.vbox)
+        """
+        self.setGeometry(400, 400, 400, 400)
+    
     
     @pyqtSlot()
     def showDialog(self):
