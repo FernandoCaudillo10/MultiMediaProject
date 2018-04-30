@@ -5,63 +5,67 @@ from PIL import Image
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-class Main(QMainWindow,QWidget):
+class Main(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
+        self.files = []
     def initUI(self):      
 
         self.textEdit = QTextEdit()
         #self.textEdit.resize(200,200)
         #self.textEdit.move(200,200)
-        self.setCentralWidget(self.textEdit)
+        #self.setCentralWidget(self.textEdit)
 
-        #self.statusBar()
         self.openFile = QPushButton("search",self)
-        self.openFile.move(305,365)
-        #openFile = QAction(QIcon('open.png'), 'Open', self)
-        #openFile.setShortcut('Ctrl+O')
-        #openFile.setStatusTip('Open new File')
-        #openFile.triggered.connect(self.showDialog)
+        #self.openFile.move(305,365)
         self.openFile.clicked.connect(self.showDialog)
 
         self.saveFiles = QPushButton("load",self)
-        self.saveFiles.clicked.connect(self.loadFiles)
-        #menubar = self.menuBar()
-        #fileMenu = menubar.addMenu('&File')
-        #fileMenu.addAction(openFile)       
+        self.saveFiles.clicked.connect(self.loadFile)
+
         
-        
-        self.setWindowTitle('File dialog')
-        """
-        self.hbox = QHBoxLayout(self)
+        self.setWindowTitle('Good Stuff')
+        #self.setWindowIcon(QtGui.QIcon('C:\Users\Red\Desktop\sd'))
+
+        self.hbox2 = QHBoxLayout()
+        self.hbox2.addWidget(self.openFile)
+        self.hbox = QHBoxLayout()
         self.hbox.addWidget(self.textEdit)
-        self.hbox1 = QHBoxLayout(self)
-        self.hbox1.addWidget(self.openFile)
-        self.vbox = QVBoxLayout(self)
-        self.vbox.addChildLayout(self.hbox)
-        self.vbox.addChildLayout(self.hbox1)
+        self.hbox1 = QHBoxLayout()
+        self.hbox1.addWidget(self.saveFiles)
+        self.vbox = QVBoxLayout()
+        self.vbox.addLayout(self.hbox2)
+        self.vbox.addLayout(self.hbox)
+        self.vbox.addLayout(self.hbox1)
         self.setLayout(self.vbox)
-        """
+        
         self.setGeometry(400, 400, 400, 400)
     
-    l = []
     @pyqtSlot()
     
     def showDialog(self):
  
         fname = QFileDialog.getOpenFileName(self, 'Open file', '/home')
-
-        if fname[0]:
-            f = open(fname[0], 'r')
-
-            with f:
-                data = f.read()
-                l.append(data)       
-    @pyqtSlot
+        #self.img = QPixmap(fname)
+        #self.img.show()
+        self.files.append(fname[0])
+        #print(fname)
+           
     def loadFile(self):
+        lot = self.textEdit.toPlainText()
+        lot = lot[8:]
+        #imga = QPixmap(lot)
         
-
+        #self.show()
+        self.files.append(lot)
+        print(self.files)  
+        self.textEdit.clear()
+        #label = QLabel(self)
+        #pixmap = QPixmap(self.files[0])
+        #label.setPixmap(pixmap)
+        #label.show()
+    
 app = QApplication(sys.argv)
 ex = Main()
 ex.show()
