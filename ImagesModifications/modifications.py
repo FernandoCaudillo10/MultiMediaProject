@@ -16,8 +16,8 @@ def grayscale(file):
     grayList = [(int((p[0] + p[1] + p[2])/3),int((p[0] + p[1] + p[2])/3),int((p[0] + p[1] + p[2])/3)) for p in im.getdata()]
     im.putdata(list(grayList))
     #im.save('grayscale.jpg')
-    im.show()
-    #return(im)
+    #im.show()
+    return(im)
 
 def negative(file):
     im = Image.open(file)
@@ -44,7 +44,6 @@ def bright(file):
     im.putdata(list(brightList))
     im.show()
 
-
 def test(file):
     im = Image.open(file)
     testList = []
@@ -68,7 +67,6 @@ def nega(file):
         negaList.append(newP)
     im.putdata(list(negaList))
     im.show()
-
 
 def ok(file):
     im = Image.open(file)
@@ -100,6 +98,19 @@ def col(file):
     im.putdata(list(List))
     im.show()
 
+def binarization(file):
+    im = grayscale(file)
+    List = []
+    for p in im.getdata():
+        if(p[0] < 128):
+            newp = (0,0,0)
+            List.append(newp)
+        else:
+            newp = (255,255,255)
+            List.append(newp)
+    im.putdata(list(List))
+    im.show()
+
 def blur(file):
     img = cv2.imread(file)
     blur = cv2.GaussianBlur(img,(5,5),0)
@@ -116,3 +127,16 @@ def edges(file):
 
     plt.show()
 
+def colsym(file):
+    im = Image.open(file)
+    List2 = []
+    for p in im.getdata():
+        List2.insert(0,p)
+    im.putdata(list(List2))
+    im.show()
+    
+    
+    
+    
+    
+    
