@@ -15,34 +15,31 @@ def grayscale(file):
     im = Image.open(file)
     grayList = [(int((p[0] + p[1] + p[2])/3),int((p[0] + p[1] + p[2])/3),int((p[0] + p[1] + p[2])/3)) for p in im.getdata()]
     im.putdata(list(grayList))
-    #im.save('grayscale.jpg')
-    #im.show()
     return(im)
 
 def negative(file):
     im = Image.open(file)
     negList = [(255-p[0], 255-p[1], 255-p[2]) for p in im.getdata()]
     im.putdata(list(negList))
-    im.show()
-    #return(im)
+    return(im)
     
 def bigColor(file,col):
     im = Image.open(file)
     colorList = [(int(1.2 * p[col]), int(0.8 * p[(col + 1) % 3]),int(0.8 * p[(col + 2) % 3])) for p in im.getdata()]
     im.putdata(list(colorList))
-    im.show()
+    return(im)
 
 def darkimg(file):
     im = Image.open(file)
     darkList = [(int(0.5*p[0]), int(0.5*p[1]), int(0.5*p[2])) for p in im.getdata()]
     im.putdata(list(darkList))
-    im.show()
+    return(im)
 
 def bright(file):
     im = Image.open(file)
     brightList = [(int(1.5*p[0]), int(1.5*p[1]), int(1.5*p[2])) for p in im.getdata()]
     im.putdata(list(brightList))
-    im.show()
+    return(im)
 
 def test(file):
     im = Image.open(file)
@@ -56,9 +53,9 @@ def test(file):
             newP = (int(1.2*p[0]), int(1.2*p[1]), int(1.2*p[2]))
             testList.append(newP)
     im.putdata(list(testList))
-    im.show()
+    return(im)
             
-def nega(file):
+def nega(file): # small grayscale
     im = Image.open(file)
     negaList = []
     for p in im.getdata():
@@ -68,19 +65,20 @@ def nega(file):
     im.putdata(list(negaList))
     im.show()
 
-def ok(file):
+def ok(file): 
     im = Image.open(file)
     myList = [(int((p[0] + p[1])/2), int((p[1] + p[2])/2), int((p[2] + p[0])/2)) for p in im.getdata()]
     im.putdata(list(myList))
     im.show()
 
+
 def rotat(file,r):
     im = Image.open(file)
     myList = [(p[(0+r)%3],p[(1+r)%3],p[(2+r)%3]) for p in im.getdata()]
     im.putdata(list(myList))
-    im.show()
+    return(im)
 
-def col(file):
+def col(file): # changing color strangely
     im = Image.open(file)
     List = []
     for p in im.getdata():
@@ -109,7 +107,7 @@ def binarization(file):
             newp = (255,255,255)
             List.append(newp)
     im.putdata(list(List))
-    im.show()
+    return(im)
 
 def blur(file):
     img = cv2.imread(file)
@@ -120,12 +118,10 @@ def edges(file):
     img = cv2.imread(file,0)
     edges = cv2.Canny(img,100,200)
     
-    plt.subplot(121),plt.imshow(img,cmap = 'gray')
-    plt.title('Original Image'), plt.xticks([]), plt.yticks([])
     plt.subplot(122),plt.imshow(edges,cmap = 'gray')
     plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
 
-    plt.show()
+    return(plt)
 
 def colsym(file):
     im = Image.open(file)
