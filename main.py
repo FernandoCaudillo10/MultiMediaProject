@@ -1,4 +1,6 @@
 import sys
+from movie import Movie
+from filtering import Filters
 #from filtering import Filters
 #from movie import Movie
 from PIL import Image
@@ -40,6 +42,8 @@ class Main(QWidget):
         self.hbox.addWidget(self.textEdit)
         self.hbox1 = QHBoxLayout()
         self.hbox1.addWidget(self.saveFiles)
+        self.hbox1.addWidget(self.movie)
+        self.hbox1.addWidget(self.imageEditor)
         self.vbox = QVBoxLayout()
         self.vbox.addLayout(self.hbox2)
         self.vbox.addLayout(self.hbox)
@@ -69,11 +73,13 @@ class Main(QWidget):
         self.textEdit.clear()
 
     def movieMaker(self):
-
+        m.show()
     def imEdit(self):
-    
+        f.show()
 app = QApplication(sys.argv)
 ex = Main()
+m = Movie(ex.files)
+f = Filters(ex.files)
 ex.show()
 sys.exit(app.exec_())
 
