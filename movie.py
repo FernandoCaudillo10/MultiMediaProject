@@ -5,8 +5,8 @@ from PyQt5.QtGui import QPixmap, QIcon, QImage, QDrag
 from PyQt5.QtCore import QSize, pyqtSlot, QTimer, QRect
 from PIL import Image
 
-class Movie(QWidget, pictureLinks):
-	def __init__(self):
+class Movie(QWidget):
+	def __init__(self, pictureLinks):
 		super().__init__()
 		
 		self.previousRow = 0
