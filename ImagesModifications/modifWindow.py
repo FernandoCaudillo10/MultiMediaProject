@@ -46,6 +46,7 @@ class modif(QWidget):
         
         self.setWindowTitle("Modifications Window")
         self.setLayout(vbox)
+        self.setGeometry(10,10,640,480)
         self.show()
         
     @pyqtSlot() 
