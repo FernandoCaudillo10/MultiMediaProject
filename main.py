@@ -17,6 +17,12 @@ class Main(QWidget):
         #self.textEdit.move(200,200)
         #self.setCentralWidget(self.textEdit)
 
+        self.movie = QPushButton("movie",self)
+        self.movie.clicked.connect(self.movieMaker)
+
+        self.imageEditor = QPushButton("Edit",self)
+        self.imageEditor.clicked.connect(self.imEdit)
+
         self.openFile = QPushButton("search",self)
         #self.openFile.move(305,365)
         self.openFile.clicked.connect(self.showDialog)
@@ -61,10 +67,10 @@ class Main(QWidget):
         self.files.append(lot)
         print(self.files)  
         self.textEdit.clear()
-        #label = QLabel(self)
-        #pixmap = QPixmap(self.files[0])
-        #label.setPixmap(pixmap)
-        #label.show()
+
+    def movieMaker(self):
+
+    def imEdit(self):
     
 app = QApplication(sys.argv)
 ex = Main()
