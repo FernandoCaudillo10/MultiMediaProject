@@ -10,12 +10,14 @@ import modifications
 
 class modif(QWidget):
     
+
+
     def __init__(self):
         super().__init__()
     
         vbox = QVBoxLayout()
         
-        self.im = Image.open("portrait2.jpg")
+        self.files = []
         
         self.my_btn1 = QPushButton("grayscale", self)
         self.my_btn2 = QPushButton("negative ", self)
@@ -47,28 +49,31 @@ class modif(QWidget):
         self.setWindowTitle("Modifications Window")
         self.setLayout(vbox)
         self.setGeometry(10,10,640,480)
-        self.show()
-        
+        #self.show()
+    def updateFiles(self, ls):
+        self.files = ls
+        self.im = Image.open(self.files[0])
+
     @pyqtSlot() 
     def on_click1(self):
-        self.im = modifications.grayscale("portrait2.jpg")
+        self.im = modifications.grayscale(files[0])
     def on_click2(self):
-        self.im = modifications.negative("portrait2.jpg")
+        self.im = modifications.negative(files[0])
     def on_click3(self):
-        self.im = modifications.darkimg("portrait2.jpg")
+        self.im = modifications.darkimg(files[0])
     def on_click4(self):
-        self.im = modifications.bright("portrait2.jpg")
+        self.im = modifications.bright(files[0])
     def on_click5(self):
-        self.im = modifications.test("portrait2.jpg")
+        self.im = modifications.test(files[0])
     def on_click6(self):
-        self.im = modifications.binarization("portrait2.jpg")       
+        self.im = modifications.binarization(files[0])       
     def on_click7(self):
-        self.im = modifications.edges("portrait2.jpg")    
+        self.im = modifications.edges(files[0])    
     def on_click(self):
-        self.im.show()
-        
-
+        self.im.show()    
+"""
 app = QApplication(sys.argv) 
 main_win = modif() 
 main_win.show() 
 sys.exit(app.exec_())
+"""

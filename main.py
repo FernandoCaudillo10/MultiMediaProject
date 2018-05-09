@@ -1,6 +1,6 @@
 import sys
 from movie import Movie
-from filtering import Filters
+from modifWindow import modif
 #from filtering import Filters
 #from movie import Movie
 from PIL import Image
@@ -10,8 +10,12 @@ from PyQt5.QtGui import *
 class Main(QWidget):
     def __init__(self):
         super().__init__()
+        
         self.initUI()
         self.files = []
+        self.m = Movie()
+        self.f = modif()
+
     def initUI(self):      
 
         self.textEdit = QTextEdit()
@@ -24,6 +28,8 @@ class Main(QWidget):
 
         self.imageEditor = QPushButton("Edit",self)
         self.imageEditor.clicked.connect(self.imEdit)
+        
+
 
         self.openFile = QPushButton("search",self)
         #self.openFile.move(305,365)
@@ -73,13 +79,16 @@ class Main(QWidget):
         self.textEdit.clear()
 
     def movieMaker(self):
-        m.show()
+        self.m.updateFiles(self.files)
+        self.m.show()
     def imEdit(self):
-        f.show()
+        self.f.updateFiles(self.files)
+        self.f.show()
+
 app = QApplication(sys.argv)
 ex = Main()
-m = Movie(ex.files)
-f = Filters(ex.files)
+
+
 ex.show()
 sys.exit(app.exec_())
 
