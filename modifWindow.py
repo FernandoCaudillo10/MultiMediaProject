@@ -1,3 +1,6 @@
+
+
+
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget,QPushButton, QLabel, QVBoxLayout
 from PyQt5.QtCore import pyqtSlot
@@ -47,25 +50,26 @@ class modif(QWidget):
         self.setLayout(vbox)
         self.setGeometry(10,10,640,480)
         #self.show()
+        
     def updateFiles(self, ls):
         self.files = ls
         self.im = Image.open(self.files[0])
 
     @pyqtSlot() 
     def on_click1(self):
-        self.im = modifications.grayscale(self.files[0])
+        self.im = modifications.grayscale(files[0])
     def on_click2(self):
-        self.im = modifications.negative(self.files[0])
+        self.im = modifications.negative(files[0])
     def on_click3(self):
-        self.im = modifications.darkimg(self.files[0])
+        self.im = modifications.darkimg(files[0])
     def on_click4(self):
-        self.im = modifications.bright(self.files[0])
+        self.im = modifications.bright(files[0])
     def on_click5(self):
-        self.im = modifications.test(self.files[0])
+        self.im = modifications.test(files[0])
     def on_click6(self):
-        self.im = modifications.binarization(self.files[0])       
+        self.im = modifications.binarization(files[0])       
     def on_click7(self):
-        self.im = modifications.edges(self.files[0])    
+        self.im = modifications.edges(files[0])    
     def on_click(self):
         self.im.show()    
 """
