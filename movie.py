@@ -73,7 +73,7 @@ class Movie(QWidget):
 		self.previousRow = self.picList.currentRow()
 		current = QPixmap(self.picList.currentItem().text())
 		self.leftLabel.setPixmap(current)
-		
+
 	def updateList(self):
 		
 		# Does not work for Ubuntu

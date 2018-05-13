@@ -57,7 +57,8 @@ class modif(QWidget):
 
     @pyqtSlot() 
     def on_click1(self):
-        self.im = modifications.grayscale(self.im)
+        self.im = modifications.grayscale(self.files[0])
+        self.im.show()
     def on_click2(self):
         self.im = modifications.negative(files[0])
     def on_click3(self):

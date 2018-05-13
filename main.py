@@ -71,9 +71,6 @@ class Main(QWidget):
     def loadFile(self):
         lot = self.textEdit.toPlainText()
         lot = lot[8:]
-        #imga = QPixmap(lot)
-        
-        #self.show()
         self.files.append(lot)
         print(self.files)  
         self.textEdit.clear()
@@ -87,8 +84,6 @@ class Main(QWidget):
 
 app = QApplication(sys.argv)
 ex = Main()
-
-
 ex.show()
 sys.exit(app.exec_())
 
