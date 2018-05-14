@@ -5,7 +5,7 @@
 #				slideshow of given images that can be rearranged at any time.
 #	Date:	14 May 2018
 
-#	Authors: Andres Gonzalez
+#	Authors:Jose Andres Gonzalez
 
 import sys
 from movie import Movie
@@ -31,25 +31,25 @@ class Main(QWidget):
 #self.textEdit.move(200,200)
 #self.setCentralWidget(self.textEdit)
 
-		self.movie = QPushButton("Play Slideshow",self)
+		self.movie = QPushButton("Play Slideshow",self)#makes and connects the button to the movie maker
 		self.movie.clicked.connect(self.movieMaker)
 
-		self.imageEditor = QPushButton("Edit Picture",self)
+		self.imageEditor = QPushButton("Edit Picture",self)#makes an connects the button to image editor
 		self.imageEditor.clicked.connect(self.imEdit)
 
 
 
-		self.openFile = QPushButton("Search From File Explorer",self)
+		self.openFile = QPushButton("Search From File Explorer",self)#makes and connects to the file explorer
 #self.openFile.move(305,365)
 		self.openFile.clicked.connect(self.showDialog)
 
-		self.saveFiles = QPushButton("Load Files",self)
+		self.saveFiles = QPushButton("Load Files",self)#loads files from the text box
 		self.saveFiles.clicked.connect(self.loadFile)
 
 
 		self.setWindowTitle('Modi-Fly')
 #self.setWindowIcon(QtGui.QIcon('C:\Users\Red\Desktop\sd'))
-
+#gui stuff to set the buttons in boxes
 		self.hbox2 = QHBoxLayout()
 		self.hbox2.addWidget(self.openFile)
 		self.hbox = QHBoxLayout()
@@ -64,20 +64,19 @@ class Main(QWidget):
 		self.vbox.addLayout(self.hbox1)
 		self.setLayout(self.vbox)
 
-		self.setGeometry(100, 100, 1000, 500)
-		
+		self.setGeometry(100, 100, 1000, 500)#end of gui settings
 	@pyqtSlot()
 
 	def showDialog(self):
 
-		fname = QFileDialog.getOpenFileName(self, 'Open file', '/home')
+		fname = QFileDialog.getOpenFileName(self, 'Open file', '/home')#opens the file explorerfor users to choose a file
 		#self.img = QPixmap(fname)
 		#self.img.show()
-		self.textEdit.append(fname[0])
+		self.textEdit.append(fname[0])#saves the file in an array
 		#print(fname)
 		
 	def loadFile(self):
-		lot = self.textEdit.toPlainText()
+		lot = self.textEdit.toPlainText()#takes the text in the text box
 
 		tempL = lot.split('\n')
 		self.files = self.files+tempL
@@ -86,18 +85,17 @@ class Main(QWidget):
 		self.files = list(map(lambda x: x[7:] if x[:4] == "file" else x, self.files))
 		self.files = list(map(lambda x: x[1:] if x[1] == "C" else x, self.files))	
 		print(self.files)
-		self.textEdit.clear()
+		self.textEdit.clear()#clears it after it is loaded
 
 	def movieMaker(self):
 		#self.m.updateFiles(self.files)
-		self.m = Movie(self.files)
-		self.m.show()
+		self.m = Movie(self.files)#this code updates the array
+		self.m.show()#opens the movie maker window 
 	def imEdit(self):
-		self.f.updateFiles(self.files)
-		self.f.show()
+		self.f.updateFiles(self.files)#populates the array
+		self.f.show()#opens the image editor array
 
 app = QApplication(sys.argv)
 ex = Main()
 ex.show()
 sys.exit(app.exec_())
-

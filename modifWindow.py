@@ -25,6 +25,8 @@ class modif(QWidget):
         
         self.files = []
         
+	# Buttons to modify the image, only the best modifications have been choose
+
         self.my_btn1 = QPushButton("grayscale", self)
         self.my_btn2 = QPushButton("negative ", self)
         self.my_btn3 = QPushButton("dark ", self)
