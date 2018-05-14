@@ -29,6 +29,8 @@ class Movie(QWidget):
 		self.picList.itemClicked.connect(self.updateLeftView)
 		self.rightButton.clicked.connect(self.updateList)		
 		self.leftButton.clicked.connect(self.destroyTimer)
+	def updateFiles(self, ls):
+		self.pictures = ls
 	def initWindow(self):
 
 		self.setGeometry(100,100,2000,1000)
@@ -95,9 +97,13 @@ class Movie(QWidget):
 		self.toggleLeftWidget()
 		self.playSlideshow()
 
+<<<<<<< HEAD
 	def updateFiles(self, ls):
 		self.pictures = ls
 		self.createPicIcons()
+=======
+
+>>>>>>> b9dc65a85b2f08d973363d7fd66623374490be4b
 		
 	def playSlideshow(self):
 		self.timer = QTimer(self)
