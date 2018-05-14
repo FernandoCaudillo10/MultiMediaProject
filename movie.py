@@ -6,7 +6,7 @@ from PyQt5.QtCore import QSize, pyqtSlot, QTimer, QRect
 from PIL import Image
 
 class Movie(QWidget):
-	def __init__(self):
+	def __init__(self, files):
 		super().__init__()
 		
 		self.previousRow = 0
@@ -21,7 +21,7 @@ class Movie(QWidget):
 #			"images/movie_test/8.png",
 #			"images/movie_test/9.png",
 #			]
-		self.pictures = []
+		self.pictures = files
 		self.buttonMessage = ["Create Slideshow", "Update Picture Order"]	
 		self.initWindow()
 		self.createPicIcons()
@@ -97,6 +97,7 @@ class Movie(QWidget):
 
 	def updateFiles(self, ls):
 		self.pictures = ls
+		self.createPicIcons()
 		
 	def playSlideshow(self):
 		self.timer = QTimer(self)
