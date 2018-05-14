@@ -8,15 +8,15 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 class Main(QWidget):
-    def __init__(self):
+    def __init__(self):#or is this the constructor
         super().__init__()
         
         self.initUI()
         self.files = []
-        self.m = Movie()
-        self.f = modif()
+        self.m = Movie()#creating the other pages
+        self.f = modif()#
 
-    def initUI(self):      
+    def initUI(self):      #the constructor i think
 
         self.textEdit = QTextEdit()
         #self.textEdit.resize(200,200)
@@ -42,7 +42,7 @@ class Main(QWidget):
         self.setWindowTitle('Good Stuff')
         #self.setWindowIcon(QtGui.QIcon('C:\Users\Red\Desktop\sd'))
 
-        self.hbox2 = QHBoxLayout()
+        self.hbox2 = QHBoxLayout()#gui stuff
         self.hbox2.addWidget(self.openFile)
         self.hbox = QHBoxLayout()
         self.hbox.addWidget(self.textEdit)
