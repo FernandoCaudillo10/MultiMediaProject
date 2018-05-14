@@ -1,4 +1,11 @@
-#jose andres gonzalez
+#	Course:	CST 205
+#	Title:	Final Project
+#	Abstract:	This Code creates a program that will allow users to modify an image given
+#				various predefined modifications. Another feature is that of creating a 
+#				slideshow of given images that can be rearranged at any time.
+#	Authors:	FernandoCaudillo, Clement Reau,Jose Andres Gonzalez
+#	Date:	14 May 2018
+
 import sys
 from movie import Movie
 from modifWindow import modif
