@@ -1,6 +1,6 @@
 # Modi-Fly
 ## MultiMediaProject
-## *By: Fernando Caudillo, Clement Reau, Jose Andres Gonzalez
+## *By: Fernando Caudillo, Clement Reau, Jose Andres Gonzalez*
 ## *CST 205*
 ## *14 May 2018*
 ## *https://github.com/FernandoCaudillo10/MultiMediaProject*
@@ -23,6 +23,10 @@
 ### *Extra Features:*
 	Can Drag-Drop items to Main page test box to include path
 	Can Drag-Drop images in slideshow list to reorder the show
+### *Future work:*
+	Create a better UI
+	Allow user to save video of slideshow
+	Allow user to specify where to save video and/or modified images
 	
 	
 
