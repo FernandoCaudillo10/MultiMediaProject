@@ -5,6 +5,7 @@ CST 205 MultiMediaProject :
 
 
 """
+#	Authors: Clement Reau
 
 from PIL import Image
 import cv2
