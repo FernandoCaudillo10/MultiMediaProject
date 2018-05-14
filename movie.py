@@ -1,3 +1,11 @@
+#	Course:	CST 205
+#	Title:	Final Project
+#	Abstract:	This Code creates a program that will allow users to modify an image given
+#				various predefined modifications. Another feature is that of creating a 
+#				slideshow of given images that can be rearranged at any time.
+#	Authors:	FernandoCaudillo, Clement Reau, Andres Gonzalez
+#	Date:	14 May 2018
+
 import sys
 import time
 from PyQt5.QtWidgets import QApplication, QWidget, QBoxLayout, QLabel, QListWidget, QListWidgetItem, QPushButton
@@ -10,6 +18,8 @@ class Movie(QWidget):
 		super().__init__()
 		
 		self.previousRow = 0
+
+	#used for testing
 #		self.pictures = [
 #			"images/movie_test/1.png",
 #			"images/movie_test/2.png",
@@ -26,13 +36,14 @@ class Movie(QWidget):
 		self.initWindow()
 		self.createPicIcons()
 		
+#set all signals
 		self.picList.itemClicked.connect(self.updateLeftView)
 		self.rightButton.clicked.connect(self.updateList)		
 		self.leftButton.clicked.connect(self.destroyTimer)
 	def updateFiles(self, ls):
 		self.pictures = ls
 	def initWindow(self):
-
+#created layout and pushed necessary skeleton
 		self.setGeometry(100,100,2000,1000)
 
 		self.layout = QBoxLayout(QBoxLayout.RightToLeft)
@@ -55,14 +66,14 @@ class Movie(QWidget):
 		self.setLayout(self.layout)
 
 	def createPicIcons(self):
+#loop through paths and create icon
 		for p in self.pictures:
 			pic = QPixmap(p)
 			icon = QIcon(pic)
 			item = QListWidgetItem(p, self.picList)
 			item.setStatusTip(p)
 			item.setIcon(icon)
-		
-		
+#create list of icons with paths		
 		self.leftLayout = QBoxLayout(QBoxLayout.TopToBottom)
 		self.leftLabel = QLabel()
 		self.leftLayout.addWidget(self.leftLabel)
@@ -72,6 +83,7 @@ class Movie(QWidget):
 		self.layout.addLayout(self.leftLayout)
 
 	def updateLeftView(self):
+#creates preview of current active image on left side
 		self.previousRow = self.picList.currentRow()
 		current = QPixmap(self.picList.currentItem().text())
 		self.leftLabel.setPixmap(current)
@@ -97,25 +109,20 @@ class Movie(QWidget):
 		self.toggleLeftWidget()
 		self.playSlideshow()
 
-<<<<<<< HEAD
-	def updateFiles(self, ls):
-		self.pictures = ls
-		self.createPicIcons()
-=======
-
->>>>>>> b9dc65a85b2f08d973363d7fd66623374490be4b
 		
 	def playSlideshow(self):
+#updates image for slideshow every 1 second
 		self.timer = QTimer(self)
 		self.timer.timeout.connect(self.update)
 		self.timer.start(1000)
 	
 	def update(self):
 		try:
+			#updates image on left side else-->
 			self.leftLabel.setPixmap( QPixmap(self.picList.item(self.itemID).text()) )
 			self.itemID += 1
 		except:
-			print("hello")
+			#else stops timer and brings up list again
 			self.timer.stop()
 			self.toggleRightWidget()
 
