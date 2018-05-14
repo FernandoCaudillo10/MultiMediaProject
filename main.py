@@ -84,7 +84,7 @@ class Main(QWidget):
 
 		self.files = list(filter(None, self.files))
 		self.files = list(map(lambda x: x[7:] if x[:4] == "file" else x, self.files))
-					
+		self.files = list(map(lambda x: x[1:] if x[1] == "C" else x, self.files))	
 		print(self.files)
 		self.textEdit.clear()
 
