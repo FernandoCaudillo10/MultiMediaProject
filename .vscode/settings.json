@@ -1,8 +1,3 @@
 {
-<<<<<<< HEAD
     "python.pythonPath": "C:\\Users\\Red\\Anaconda3\\envs\\Vit\\python.exe"
-=======
-    "python.pythonPath": "C:\\Users\\caudi\\Anaconda3\\envs\\myvenv\\python.exe",
-    "python.linting.enabled": false
->>>>>>> 45fdbaa8772b9b29c229d6b5f91fa3456ae7ac7a
 }

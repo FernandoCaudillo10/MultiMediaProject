@@ -60,7 +60,7 @@ class Main(QWidget):
     
     @pyqtSlot()
     
-    def showDialog(self):
+    def showDialog(self):#opens and saves the file path
  
         fname = QFileDialog.getOpenFileName(self, 'Open file', '/home')
         #self.img = QPixmap(fname)
@@ -68,17 +68,17 @@ class Main(QWidget):
         self.files.append(fname[0])
         #print(fname)
            
-    def loadFile(self):
+    def loadFile(self):#drag and drop part, can only take one file at a time.
         lot = self.textEdit.toPlainText()
         lot = lot[8:]
         self.files.append(lot)
         print(self.files)  
         self.textEdit.clear()
 
-    def movieMaker(self):
+    def movieMaker(self):#connects to non-working code 
         self.m.updateFiles(self.files)
         self.m.show()
-    def imEdit(self):
+    def imEdit(self):#image editor
         self.f.updateFiles(self.files)
         self.f.show()
 
